@@ -5,17 +5,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const passport = require('../services/oauthConfig');
 
-
-router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
-
-router.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
-    
-    res.redirect('/dashboard');
-  });
-
-
 // Signup endpoint
 router.post("/signup", async (req, res) => {
     const data = req.body;
@@ -49,6 +38,26 @@ router.post('/login', passport.authenticate('local', { session: false }), (req, 
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
+});
+
+
+
+router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+router.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    
+    res.redirect('/dashboard');
+  });
+
+  
+
+// log out endpoint
+router.post('/logout', (req, res) => {
+    // Clear the authentication token stored in the client-side cookie
+    res.clearCookie('jwt');
+    res.json({ message: 'User signed out successfully' });
 });
 
 module.exports = router;
