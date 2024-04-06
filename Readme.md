@@ -1,6 +1,6 @@
 
 
-`# Authentication API
+# Authentication API
 
 This is a Node.js-based authentication API that allows users to register, log in, log out, view and edit their profiles, set profile privacy, and upload profile pictures.
 
@@ -13,19 +13,19 @@ To get started with the project, follow these steps:
    ```bash
    git clone https://github.com/Gobinath-B/voosh-Assesment.git `
 
-1.  Install dependencies:
+1.  **Install dependencies:**
 
-    bashCopy code
-
+    ```bash
+    
     `npm install`
 
-2.  Set up environment variables:
+3.  **Set up environment variables:**
 
     -   Create a `.env` file in the root directory.
     -   Define environment variables like `PORT`, `DATABASE_URL`, etc. in the `.env` file.
-3.  Start the server:
+4.  **Start the server:**
 
-    bashCopy code
+    ```bash
 
     `npm start`
 
