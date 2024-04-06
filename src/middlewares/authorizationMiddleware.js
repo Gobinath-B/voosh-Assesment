@@ -5,7 +5,7 @@ const User = require('../models/user');
 async function authorizeUser(req, res, next) {
     try {
         // Get the ID of the requested user profile
-        const userId = req.params.userId; // Assuming the user ID is passed as a route parameter
+        const userId = req.params.userId; 
 
         // Find the user profile in the database
         const userProfile = await User.findById(userId);
@@ -16,11 +16,11 @@ async function authorizeUser(req, res, next) {
 
         // Check if the requesting user is an admin
         if (req.user.role === 'admin') {
-            // Admin users can access both public and private profiles
+            
             return next();
         }
 
-        // If the user is not an admin, check the privacy settings of the profile
+        
         if (userProfile.isPublic) {
             // Normal users can access public profiles
             return next();
